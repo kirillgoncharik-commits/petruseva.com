@@ -216,14 +216,14 @@ p { margin: 0 0 1rem; }
 .hero h1 { max-width: 20ch; margin: 0 auto 22px; }
 .hero .lead { max-width: 650px; margin: 0 auto 28px; }
 .hero .actions { justify-content: center; }
-.hero-photo { width: 100%; max-width: 380px; margin: 0; }
+.hero-photo { width: 100%; max-width: 360px; margin: 0; }
 .hero-photo::before { display: none; }
 .hero-photo img {
   display: block;
   width: 100%;
-  aspect-ratio: 4 / 5;
+  aspect-ratio: 2 / 3;
   object-fit: cover;
-  object-position: center top;
+  object-position: center center;
   border-radius: var(--radius);
   box-shadow: var(--shadow);
 }
