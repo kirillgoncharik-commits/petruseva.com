@@ -28,7 +28,8 @@ Every updated route now uses `<picture>`, WebP `srcset`, explicit `sizes`, dimen
 ## SEO and technical checks
 
 - The Montenegro canonical, sitemap entry, breadcrumb data, FAQ data and local `Service` schema were already correctly configured and remain intact.
-- The new 404 page is marked `noindex,follow`.
+- Production currently returns the homepage with `200 OK` for an unknown path because the project had no top-level `404.html` and Cloudflare Pages treated it as a single-page application.
+- The new top-level `404.html` is marked `noindex,follow`. On Cloudflare Pages this switches unmatched routes to the custom not-found response with HTTP 404; the response must be rechecked on a branch preview or after an approved release.
 
 ## Open content item
 
