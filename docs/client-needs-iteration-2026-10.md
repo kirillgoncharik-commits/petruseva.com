@@ -13,6 +13,7 @@
 ## Image audit
 
 The original JPEG files remain untouched and continue to serve as fallbacks.
+No higher-resolution alternate sources for these photographs were present in the repository.
 
 | Image family | Source resolution | Previous WebP | New responsive WebP files | Use |
 | --- | ---: | ---: | --- | --- |
