@@ -2,7 +2,7 @@
 
 ## Copy and conversion
 
-- Restored the approved homepage H1 from `docs/copy-deck.md`: “Место, где можно выдохнуть и снова опереться на себя.”
+- Historical correction (2026-10-12): this iteration inadvertently restored an obsolete homepage H1 from an outdated copy deck. The current approved copy is now specified in `docs/copy-deck.md` and protected by an automated check.
 - Kept the SEO-supporting language in the surrounding copy and metadata.
 - Made the booking path consistent: online from any country; in-person meetings in Bar by prior arrangement.
 - Repeated the 60-minute individual and 90-minute couples formats on the contact route.
