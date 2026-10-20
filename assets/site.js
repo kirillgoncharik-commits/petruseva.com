@@ -87,15 +87,41 @@ if (navToggle && siteNav) {
   });
 }
 
-document.querySelectorAll('[data-analytics]').forEach((link) => {
-  link.addEventListener('click', () => {
-    if (typeof window.gtag === 'function') {
-      window.gtag('event', link.dataset.analytics, {
-        link_url: link.href,
-        link_text: link.textContent.trim(),
-        page_path: window.location.pathname
-      });
+function conversionEvent(link) {
+  const href = link.getAttribute('href') || '';
+  if (/^mailto:/i.test(href)) return { name: 'click_email' };
+  if (/^tel:/i.test(href)) return { name: 'click_phone' };
+  if (/^(?:https?:\/\/)?(?:wa\.me|api\.whatsapp\.com|t\.me)\//i.test(href)) {
+    return {
+      name: 'click_messenger',
+      messenger: /(?:wa\.me|whatsapp)/i.test(href) ? 'whatsapp' : 'telegram'
+    };
+  }
+
+  try {
+    const url = new URL(href, window.location.origin);
+    if (url.origin === window.location.origin && /^\/contact\/?$/.test(url.pathname)) {
+      return { name: 'click_booking' };
     }
+  } catch {
+    // Invalid or non-navigation hrefs are ignored below.
+  }
+
+  return link.dataset.analytics ? { name: link.dataset.analytics } : null;
+}
+
+document.querySelectorAll('a[href], [data-analytics]').forEach((link) => {
+  link.addEventListener('click', () => {
+    if (typeof window.gtag !== 'function') return;
+    const event = conversionEvent(link);
+    if (!event) return;
+
+    window.gtag('event', event.name, {
+      page_path: window.location.pathname,
+      cta_source: link.dataset.analytics || 'unlabelled_link',
+      messenger: event.messenger,
+      link_text: link.textContent.trim().replace(/\s+/g, ' ').slice(0, 100)
+    });
   });
 });
 
