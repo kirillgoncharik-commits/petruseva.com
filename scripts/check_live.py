@@ -14,8 +14,12 @@ def check(route):
   with urlopen(Request(BASE+route,headers={'User-Agent':'PetrusevaSiteQA/2.0','Cache-Control':'no-cache'}),timeout=20) as response:
    raw=response.read();status=response.status;final=response.url
   expected=file.read_bytes()
-  # Cloudflare may apply harmless HTML minification. Compare DOM text and metadata.
-  def normalized(b):return re.sub(r'\s+',' ',b.decode()).strip()
+  # The custom domain can inject Cloudflare's existing Web Analytics beacon.
+  # Ignore only that known external, empty script; compare all authored HTML.
+  def normalized(b):
+   text=b.decode()
+   text=re.sub(r'<script[^>]+src="https://static\.cloudflareinsights\.com/beacon\.min\.js[^"]*"[^>]*>\s*</script>', '', text)
+   return re.sub(r'\s+',' ',text).strip()
   same=normalized(raw)==normalized(expected)
   return {'route':route,'status':status,'matches_source':same,'url':final}
  except Exception as ex:return {'route':route,'error':str(ex)}
