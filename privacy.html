@@ -12,17 +12,15 @@
 <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
 <link rel="icon" type="image/png" sizes="512x512" href="/favicon-512.png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/fonts.css?v=20261102">
 <style>
 :root{
-  --bg:#FDF2E4;
-  --bg-deep:#EFE0C2;
-  --ink:#33392F;
-  --ink-soft:#5B6355;
-  --resada:#6B7D60;
-  --card:#EFE0C2;
+  --bg:#FAF8F4;
+  --bg-deep:#EEE9E0;
+  --ink:#292E29;
+  --ink-soft:#50594F;
+  --resada:#465343;
+  --card:#EEE9E0;
   --line:#C4BDD2;
   --radius:22px;
 }
@@ -31,12 +29,12 @@ body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--i
 .wrap{max-width:760px;margin:0 auto;padding:0 24px}
 .top{position:sticky;top:0;z-index:50;backdrop-filter:blur(10px);background:rgba(253,242,228,.85);border-bottom:1px solid var(--line)}
 .top .wrap{display:flex;align-items:center;height:64px;max-width:1080px}
-.brand{font-family:'Fraunces',serif;font-size:1.15rem;letter-spacing:-.02em;text-decoration:none;color:var(--ink)}
+.brand{font-family:'Lora',serif;font-size:1.15rem;letter-spacing:-.02em;text-decoration:none;color:var(--ink)}
 .brand b{color:var(--resada);font-weight:500}
 main{padding:64px 0 96px}
 .draft-note{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--resada);border-radius:12px;padding:16px 20px;font-size:.92rem;color:var(--ink-soft);margin-bottom:40px}
-h1{font-family:'Fraunces',serif;font-weight:400;font-size:clamp(2rem,4.4vw,2.8rem);letter-spacing:-.02em;margin-bottom:28px}
-h2{font-family:'Fraunces',serif;font-weight:500;font-size:1.3rem;margin:36px 0 12px;letter-spacing:-.01em;color:var(--resada)}
+h1{font-family:'Lora',serif;font-weight:400;font-size:clamp(2rem,4.4vw,2.8rem);letter-spacing:-.02em;margin-bottom:28px}
+h2{font-family:'Lora',serif;font-weight:500;font-size:1.3rem;margin:36px 0 12px;letter-spacing:-.01em;color:var(--resada)}
 p{color:var(--ink-soft);margin-bottom:12px}
 ul{color:var(--ink-soft);margin:0 0 12px 20px}
 li{margin-bottom:6px}
@@ -46,6 +44,7 @@ footer{border-top:1px solid var(--line);padding:34px 0;font-size:.86rem;color:va
 footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:center}
 :focus-visible{outline:2px solid var(--resada);outline-offset:3px;border-radius:6px}
 </style>
+<link rel="stylesheet" href="/assets/site.css?v=20261102">
 </head>
 <body>
 
@@ -62,7 +61,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
     <h1>Политика конфиденциальности</h1>
 
     <h2>Оператор данных</h2>
-    <p>Оператором данных этого сайта является Анастасия Петрусёва, практикующая самостоятельно, владелец сайта petruseva.com. По вопросам и запросам, связанным с вашими данными, используйте контакты в разделе «Мои контакты» на главной странице.</p>
+    <p>Оператором данных этого сайта является Анастасия Петрусёва, практикующая самостоятельно, владелец сайта petruseva.com. По вопросам и запросам, связанным с вашими данными, используйте <a href="/contact/">контакты для записи</a>.</p>
 
     <h2>Как со мной связаться</h2>
     <p>На сайте нет формы обратной связи — все кнопки записи на консультацию ведут напрямую в WhatsApp или Telegram. Сам сайт не собирает и не хранит ваше имя, контакт или текст сообщения: они остаются только в переписке в соответствующем мессенджере.</p>
@@ -82,7 +81,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
     <p>Выбор сохраняется локально в браузере под ключом <code>petruseva_analytics_consent</code>. Если аналитика включена, данные обрабатывает Google в соответствии со своей <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">политикой конфиденциальности</a> и они не связаны с перепиской в WhatsApp, Telegram или Instagram.</p>
 
     <h2>Ваши права</h2>
-    <p>Чтобы задать вопрос об этой политике, свяжитесь с Анастасией напрямую через контакты на главной странице. Точный перечень ваших прав в зависимости от страны проживания (включая GDPR для резидентов ЕС/ЕЭЗ, 152-ФЗ для резидентов России или законодательство Черногории о защите данных) сейчас согласовывается с юристом по персональным данным и будет опубликован здесь после подтверждения.</p>
+    <p>Чтобы задать вопрос об этой политике, свяжитесь с Анастасией напрямую через <a href="/contact/">контакты для записи</a>. Точный перечень ваших прав в зависимости от страны проживания (включая GDPR для резидентов ЕС/ЕЭЗ, 152-ФЗ для резидентов России или законодательство Черногории о защите данных) сейчас согласовывается с юристом по персональным данным и будет опубликован здесь после подтверждения.</p>
 
     <div class="updated">Черновая версия — последнее изменение 09.10.2026. Ещё не проверена юристом.</div>
   </div>
@@ -91,8 +90,9 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
 <footer>
   <div class="wrap">
     <div>© 2026 Анастасия Петрусёва · Гештальт-терапевт</div>
-    <div><a href="/">Вернуться на главную</a></div>
+    <div><a href="/">Вернуться на главную</a></div><button type="button" class="text-button" data-consent-settings>Настройки аналитики</button>
   </div>
 </footer>
+<script src="/assets/site.js?v=20261102" defer></script>
 </body>
 </html>
