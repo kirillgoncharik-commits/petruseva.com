@@ -67,7 +67,7 @@ for (const slug of onlineOnly) {
   const html = readFileSync(join(root, slug, 'index.html'), 'utf8');
   if (!html.toLowerCase().includes('только онлайн')) errors.push(`/${slug}/: нет явной маркировки «только онлайн»`);
   if (html.includes('LocalBusiness')) errors.push(`/${slug}/: запрещён LocalBusiness`);
-  if (!html.toLowerCase().includes('очн')) errors.push(`/${slug}/: нет пояснения об отсутствии очного приёма`);
+  if (!html.includes('Zoom')) errors.push(`/${slug}/: не указан онлайн-формат в Zoom`);
 }
 
 for (const slug of ['bar', 'montenegro']) {
