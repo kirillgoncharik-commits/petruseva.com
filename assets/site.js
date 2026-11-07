@@ -1,3 +1,24 @@
+
+  // Send a clean page address; campaign labels are separate from contact/form query strings.
+  function analyticsContext() {
+    const context = {
+      page_location: location.origin + location.pathname,
+      page_referrer: '',
+      allow_google_signals: false,
+      allow_ad_personalization_signals: false
+    };
+    try { const ref = new URL(document.referrer); context.page_referrer = ref.origin + ref.pathname; } catch (_) {}
+    const query = new URLSearchParams(location.search);
+    for (const [utm, field] of Object.entries({utm_source:'campaign_source', utm_medium:'campaign_medium', utm_campaign:'campaign_name', utm_content:'campaign_content', utm_term:'campaign_term'})) {
+      const value = query.get(utm);
+      if (value && /^[a-zA-Z0-9_. -]{1,100}$/.test(value) && !/\d{7}/.test(value)) context[field] = value;
+    }
+    if (query.get('codex_test') === 'seo_20261107') { context.debug_mode = true; context.test_run = 'seo_20261107'; }
+    return context;
+  }
+  function analyticsPage() {
+    return {site: location.hostname.replace(/^www\./, ''), language: document.documentElement.lang || 'en', page_path: location.pathname};
+  }
 const ANALYTICS_ID = 'G-KKE2K4RYRT';
 const CONSENT_KEY = 'petruseva_analytics_consent';
 let analyticsLoaded = false;
@@ -25,6 +46,7 @@ function enableAnalytics() {
   window.gtag('js', new Date());
   // Do not send help-topic fragments, query strings, messages or contact URLs.
   window.gtag('config', ANALYTICS_ID, {
+    ...analyticsContext(),
     page_location: cleanURL(window.location.href),
     page_referrer: cleanURL(document.referrer),
     allow_google_signals: false,
@@ -51,7 +73,7 @@ function disableAnalytics() {
 const placements = new Set(['header', 'hero', 'pricing', 'final', 'content', 'footer']);
 function track(name, values = {}) {
   if (currentConsent !== 'granted' || typeof window.gtag !== 'function') return;
-  window.gtag('event', name, values);
+  window.gtag('event', name, { ...analyticsPage(), ...values });
 }
 function mountConsentBanner(settings = false) {
   if (document.querySelector('.consent-banner')) return;
